@@ -8,11 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
@@ -22,8 +23,6 @@ import com.google.firebase.auth.FirebaseUser;
 public class StartActivity extends AppCompatActivity {
     private EditText id,password;
     private Button login,signup;
-    private TextView txtProgress;
-    private ProgressBar progressBar;
     private FirebaseAuth auth;
     private TextView errorMessage;
     private static final String TAG = "MyTag";
@@ -47,13 +46,6 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-
-        id=(EditText)findViewById(R.id.txt_username);
-        password=(EditText)findViewById(R.id.txt_password);
-        login=(Button)findViewById(R.id.btn_ok);
-        signup=(Button)findViewById(R.id.btn_signup);
-        txtProgress=(TextView)findViewById(R.id.txt_progress);
-        progressBar=(ProgressBar)findViewById(R.id.progress_bar);
         initializeVariables();
 
         auth=FirebaseAuth.getInstance(); //creating an object [auth] of [FirebaseAuth] class.
@@ -65,17 +57,12 @@ public class StartActivity extends AppCompatActivity {
                 String text_password=password.getText().toString();
                 if(TextUtils.isEmpty(text_id)||TextUtils.isEmpty(text_password))
                 {
-                    id.setError("enter name");
-                    password.setError("enter password");
                     Toast.makeText(StartActivity.this,"invalid credientiala",Toast.LENGTH_SHORT).show();
                     errorMessage.setText("Empty field(s)");
 
                 }
                 else
                 {
-                    progressBar.setVisibility(View.VISIBLE);
-                    txtProgress.setText("Loading... please wait.");
-                    txtProgress.setVisibility(View.VISIBLE);
                     loginUser(text_id, text_password);
                 }
             }
@@ -110,9 +97,6 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e)
             {
-
-                progressBar.setVisibility(View.GONE);
-                txtProgress.setVisibility(View.GONE);
 //                UserRecord userRecord = FirebaseAuth.getInstance().getUser(uid);
 //                System.out.println("Successfully fetched user data: " + userRecord.getUid());
                 Toast.makeText(StartActivity.this,"not Registered ",Toast.LENGTH_SHORT).show();

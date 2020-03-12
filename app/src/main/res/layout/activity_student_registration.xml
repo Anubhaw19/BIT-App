@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_marginTop="10dp"
-        android:inputType="textEmailAddress"
+        android:inputType="textPersonName"
         android:hint="E-MAIL"/>
 
     <EditText
@@ -91,25 +91,6 @@
         android:layout_marginTop="35dp"
         android:text="SIGN UP"
         android:padding="16dp" />
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-        <ProgressBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/progress_bar"
-            android:visibility="invisible"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Loadin..."
-            android:visibility="invisible"
-            android:textSize="25dp"
-            android:id="@+id/txt_progress"/>
-
-    </LinearLayout>
 
 
 
